@@ -1,0 +1,977 @@
+@font-face {
+  font-family: 'Pixelade';
+  src: url('../public/assets/pixelade.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DungeonFont';
+  src: url('../public/assets/DungeonFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pixelade', 'Courier New', monospace;
+  background-color: #0C1121;
+  color: white;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.start-screen {
+  background: linear-gradient(135deg, #0C1121, #1a1f3a);
+}
+
+.game-screen {
+  /*background-image: url('/assets/images/background.png');*/
+  background-image: url('../public/assets/images/cavern.png');
+  background-size: 100vw 100vh;
+  background-repeat: repeat;
+  display: block; /* Override flex centering */
+  z-index: 10;
+  /* Create fixed game area */
+  background-position: 50% -200px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fixed game area container */
+.game-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 1;
+}
+
+.game-over-screen {
+  background: linear-gradient(135deg, #2d1b1b, #0C1121);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.win-screen {
+  background: linear-gradient(135deg, #1b2d1b, #0C2110);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.win-title {
+  font-family: 'DungeonFont', 'Pixelade', 'Courier New', monospace;
+  font-size: 4rem;
+  font-family: 'DungeonFont';
+  margin-top: 1rem;
+  text-align: center;
+  color: #90EE90;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  font-weight: normal;
+  text-decoration: 4px underline;
+}
+
+.victory-message {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #90EE90;
+  font-weight: bold;
+}
+
+.win-instructions {
+  margin-top: 2rem;
+  text-align: center;
+  color: #AAA;
+}
+
+/* Crystal Flash Glow Effect - Only for light crystal before changing */
+.crystal .sprite.crystal-flash-glow {
+  animation: crystal-flash-phase 1.5s ease-in-out infinite alternate !important;
+}
+
+/* Crystal Dark Glow Effect - Permanent for dark crystal */
+.crystal-dark-glow {
+  filter: 
+    drop-shadow(0 0 10px rgba(128, 0, 92, 0.8))
+    drop-shadow(0 0 20px rgba(128, 0, 92, 0.6))
+    drop-shadow(0 0 30px rgba(128, 0, 92, 0.4))
+    drop-shadow(0 0 40px rgba(128, 0, 92, 0.2));
+}
+
+@keyframes crystal-flash-phase {
+  0% {
+    filter: 
+      drop-shadow(0 0 20px rgba(128, 0, 92, 0.3))
+      drop-shadow(0 0 40px rgba(128, 0, 92, 0.2));
+  }
+  100% {
+    filter: 
+      drop-shadow(0 0 30px rgba(128, 0, 92, 0.8))
+      drop-shadow(0 0 60px rgba(128, 0, 92, 0.6))
+      drop-shadow(0 0 90px rgba(128, 0, 92, 0.4));
+  }
+}
+
+.title {
+  font-family: 'DungeonFont', 'Pixelade', 'Courier New', monospace;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #4ecdc4;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title-banner {
+  display: block;
+  margin: 0rem auto 0rem auto;
+  max-width: 100%;
+  max-height: 140px;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.subtext {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #AAA;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.start-button, .restart-button {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  background:  #008080;
+  width: 200px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  outline: none;
+}
+
+.start-button:hover, .restart-button:hover {
+  background: #009797;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.infinite-mode-button {
+  padding: 0.5rem ;
+  width: 200px;
+  font-size: 1.2rem;
+  background: #0f79a6;
+  border: none;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  margin-top: 10px;
+}
+
+.infinite-mode-button:hover {
+  background: #1A9BBB;
+}
+
+.instructions {
+  font-size: 1.3rem;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.game-ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.health-bar {
+  position: absolute;
+  bottom: 160px;
+  left: 45px; /* Moved right to make room for icon */
+  width: 200px;
+  height: 20px;
+  background: #400426;
+  border: 4px solid #84235C;
+  overflow: hidden;
+  z-index: 21; /* Above game area */
+  display: flex;
+  align-items: center;
+}
+
+.health-icon {
+  position: absolute;
+  bottom: 148px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  z-index: 22;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.health-fill {
+  height: 100%;
+  background: #E070B2;
+  transition: width 0.3s ease;
+}
+
+.health-text {
+  position: absolute;
+  bottom: 160px;
+  left: 255px; /* Adjusted for new bar position */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 21; /* Above game area */
+}
+
+/* Energy Bar */
+.energy-bar {
+  position: absolute;
+  bottom: 126px;
+  left: 45px; /* Moved right to make room for icon */
+  width: 200px;
+  height: 20px;
+  background: #321300;
+  border: 4px solid #6F3F00;
+  overflow: hidden;
+  z-index: 21; /* Above game area */
+  display: flex;
+  align-items: center;
+}
+
+.energy-icon {
+  position: absolute;
+  bottom: 118px;
+  left: 23px;
+  width: 36px;
+  height: 36px;
+  z-index: 22;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.energy-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C8913E, #E6A847);
+  transition: width 0.3s ease;
+}
+
+.energy-text {
+  position: absolute;
+  bottom: 126px;
+  left: 255px; /* Adjusted for new bar position */
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 21; /* Above game area */
+}
+
+.ultimate-ready {
+  color: #FFFFFF;
+  animation: flash 0.4s infinite;
+  font-weight: bold;
+}
+
+@keyframes flash {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.word-display {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 20; /* Above game area */
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px 0;
+}
+
+.current-word {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.next-word-preview {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0.7;
+  font-family: 'Helvetica', 'Courier New', monospace;
+}
+
+.word-char {
+  display: inline-block;
+  margin: 0 2px;
+  min-width: 25px;
+  text-align: center;
+  font-family: 'Helvetica', 'Courier New', monospace;
+}
+
+.char-typed {
+  color: #888;
+}
+
+.char-current {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.char-remaining {
+  color: #ccc;
+}
+
+.char-preview {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0.7;
+}
+
+.skill-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 1);
+  padding: 15px 0;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  z-index: 20; /* Above game area */
+}
+
+
+.skill-slots {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.skill-slot {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(0.5);
+}
+
+.skill-slot.selected {
+  filter: brightness(1.0);
+}
+
+.skill-icon-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.skill-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.skill-instructions {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+}
+
+.game-object {
+  position: absolute;
+  pointer-events: none;
+}
+
+.sprite {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.crystal {
+  z-index: 1; /* Below enemies but above background */
+  filter: drop-shadow(0 0 10px rgba(74, 144, 226, 0.8));
+}
+
+.crystal.dark-crystal {
+  filter: none;
+}
+
+.crystal .sprite:not(.crystal-dark-glow) {
+  animation: crystal-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes crystal-glow {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 5px rgba(74, 144, 226, 0.6));
+  }
+  100% {
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(74, 144, 226, 0.9));
+  }
+}
+
+.enemy {
+  position: absolute;
+  z-index: 10;
+}
+
+.player {
+  position: absolute;
+  z-index: 5;
+}
+
+/* Ultimate VFX layering */
+.ultimate-flash {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #f7eee1;
+  opacity: 0.7;
+  z-index: 55; /* below ultimate image, above everything else */
+  pointer-events: none;
+}
+
+.ultimate-vfx {
+  position: absolute;
+  z-index: 60; /* above flash */
+  pointer-events: none;
+}
+
+/* Shared hitbox styling for debugging */
+.hitbox-debug {
+  position: absolute;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  /* Toggle visibility by commenting/uncommenting the line below */
+  display: none;
+  /* display: block; */
+}
+
+.score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 20; /* Above game area */
+}
+
+/* Wave Display */
+.wave-display {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #4ecdc4;
+  color: white;
+  font-family: 'Pixelade', monospace;
+  z-index: 20;
+  min-width: 300px;
+}
+
+.wave-display h3 {
+  margin: 0 0 10px 0;
+  color: #4ecdc4;
+  font-size: 1.2rem;
+}
+
+.wave-progress {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ecdc4, #44a08d);
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.next-wave {
+  background: rgba(78, 205, 196, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border-left: 3px solid #4ecdc4;
+}
+
+.next-wave p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.wave-description {
+  color: #aaa;
+  font-style: italic;
+}
+
+.wave-stats {
+  font-size: 0.8rem;
+  color: #888;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 8px;
+}
+
+/* Wave Announcement */
+.wave-announcement {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.wave-announcement-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 30px;
+  border-radius: 15px;
+  border: 3px solid #FFF;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(78, 205, 196, 0.5);
+  animation: waveAnnouncementPulse 2s ease-in-out;
+}
+
+.wave-title {
+  font-family: 'Pixelade', monospace;
+  font-size: 2.5rem;
+  color: #FFF;
+  margin: 0 0 20px 0;
+  text-shadow: 0 0 10px rgba(78, 205, 196, 0.8);
+}
+
+.wave-hint {
+  font-family: 'Pixelade', monospace;
+  font-size: 1.5rem;
+  color: #FFF;
+  margin: 0;
+}
+
+@keyframes waveAnnouncementPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Skip Tutorial Button */
+.skip-tutorial-button {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: #0f79a6;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  z-index: 25;
+}
+
+.skip-tutorial-button:hover {
+  background: #1a9bbb;
+}
+
+/* Game Settings */
+.game-settings {
+  margin: 10px 0;
+}
+
+.setting-item {
+  margin: 15px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Pixelade', monospace;
+  font-size: 1.1rem;
+  color: #ccc;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #4ecdc4;
+  border-radius: 4px;
+  margin-right: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: #4ecdc4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Difficulty Selection */
+.difficulty-selection {
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.difficulty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.difficulty-arrow {
+  background: #008080;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.difficulty-arrow:hover {
+  background: #009797;
+}
+
+.difficulty-display {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(78, 205, 196, 0.5);
+  border-radius: 8px;
+  padding: 15px 20px;
+  min-width: 200px;
+}
+
+.difficulty-name {
+  font-family: 'Pixelade', monospace;
+  font-size: 1.2rem;
+  color: #4ECDC4;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.difficulty-wpm {
+  font-family: 'Pixelade', monospace;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.difficulty-description {
+  font-family: 'Pixelade', monospace;
+  font-size: 0.9rem;
+  color: #ccc;
+  opacity: 0.8;
+}
+
+.checkbox-label:hover .checkmark {
+  background: rgba(78, 205, 196, 0.3);
+  transform: scale(1.1);
+}
+
+.game-over-title {
+  font-size: 4rem;
+  font-family: 'DungeonFont';
+  margin-top: 1rem;
+  color: #ff4444;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  font-weight: normal;
+  text-decoration: 4px underline;
+}
+
+.game-over-death-sprite {
+  width: 96px; /* 32 * 3 scale */
+  height: 96px; /* 32 * 3 scale (last frame is 32x32) */
+  margin-top: 1rem;
+  background-image: url('../public/assets/sprites/B_witch_death.png');
+  background-position: 0px -1344px; 
+  background-size: 96px 1440px; 
+  image-rendering: pixelated;
+  min-height: 96px;
+}
+
+.win-witch-sprite {
+  width: 96px; /* 32 * 3 scale */
+  height: 96px; /* 32 * 3 scale */
+  margin-top: 1rem;
+  background-image: url('../public/assets/sprites/B_witch_idle.png');
+  background-position: 0px 0px; /* First frame of idle animation */
+  background-size: 96px 576px; /* 32*3 x (6*32*3) - 6 frames vertically */
+  image-rendering: pixelated;
+  min-height: 96px;
+}
+
+.difficulty-marker {
+  font-size: 1.5rem;
+  color: #4ECDC4;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.final-score {
+  font-size: 2rem;
+  color: #FFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+}
+
+/* Enemy Health Bar */
+.enemy-health-container {
+  position: absolute;
+  top: -25px;
+  z-index: 10;
+}
+
+.enemy-health-bar {
+  width: 60px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #333;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.enemy-health-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4444, #ff6666);
+  transition: width 0.3s ease;
+}
+
+.enemy-health-text {
+  font-size: 9px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Hint Display */
+.hint-display {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  font-family: 'Pixelade', monospace;
+  font-size: 1.8rem;
+  color: #FFF;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5); /*newly added*/
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+/* WPM Metrics */
+.wpm-metrics {
+  margin: 20px 0 40px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.words-typed, .average-wpm {
+  font-family: 'Pixelade', monospace;
+  font-size: 1.2rem;
+  color: #FFF;
+  margin: 8px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.average-wpm {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1a9bbb;
+}
+
+/* Wind Hitbox */
+.wind-hitbox {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  z-index: 9;
+  border-radius: 50%;
+  /*opacity: 0.5;*/
+  opacity: 0;
+}
+
+/* Impact Hitbox */
+.impact-hitbox {
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  z-index: 9;
+  border: 2px solid orange;
+  border-radius: 50%;
+  /*opacity: 0.3;*/
+  opacity: 0;
+}
+
+/* Damage Effect Animation */
+@keyframes damageFloat {
+  0% {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-60px);
+    opacity: 0;
+  }
+}
+
+.damage-effect {
+  animation: damageFloat 1.5s ease-out forwards;
+  z-index: 1000;
+}
