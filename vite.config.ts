@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 
 export default defineConfig({
-  base: "/vite-react-project/",
+  base: "/cavern-of-keystone/",
   plugins: [react()],
 });
 
