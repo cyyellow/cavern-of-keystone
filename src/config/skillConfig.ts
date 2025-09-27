@@ -14,7 +14,7 @@ export const SKILLS: Skill[] = [
     type: 'bullet',
     name: 'Bullet',
     description: 'Shoot a bullet at enemies',
-    icon: './assets/images/5.png',
+    icon: '/assets/images/5.png',
     wordLength: 5,
     wordList: [], // Will be loaded from words.txt
     damage: 10

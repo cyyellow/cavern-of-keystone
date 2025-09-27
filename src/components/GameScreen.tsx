@@ -39,7 +39,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ gameState, dispatch }) => {
       {/* Game UI */}
       <div className="game-ui">
         {/* Health Bar */}
-        <img src="/assets/images/heart.png" alt="Health" className="health-icon" />
+        <img src="./assets/images/heart.png" alt="Health" className="health-icon" />
         <div className="health-bar">
           <div 
             className="health-fill" 
@@ -50,7 +50,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ gameState, dispatch }) => {
           HP {gameState.player.health}/{gameState.player.maxHealth}
         </div>
         {/* Energy Bar */}
-        <img src="/assets/images/energy.png" alt="Energy" className="energy-icon" />
+        <img src="./assets/images/energy.png" alt="Energy" className="energy-icon" />
         <div className="energy-bar">
           <div 
             className="energy-fill" 
