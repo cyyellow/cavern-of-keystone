@@ -1,5 +1,15 @@
 import React from 'react';
 import { Enemy as EnemyType } from '../types';
+
+// Import assets so Vite can process them
+import wispSprite from '/assets/sprites/wisp.png';
+import eyeballSlideSprite from '/assets/sprites/eyeball_slide.PNG';
+import eyeballWalkSprite from '/assets/sprites/eyeball_walk.PNG';
+import blueBatSprite from '/assets/sprites/bluebat_Flying.png';
+import purpleBatSprite from '/assets/sprites/purplebat_Flying.png';
+import ghostSprite from '/assets/sprites/ghost.png';
+import undeadAtkSprite from '/assets/sprites/undead_atk.png';
+import undeadIdleSprite from '/assets/sprites/undead_idle2.png';
 import { getEnemyAnimationSpeed, EYEBALL_SLIDE } from '../config/gameConfig';
 
 interface EnemyProps {
@@ -119,11 +129,11 @@ const Enemy: React.FC<EnemyProps> = ({ enemy, gameState }) => {
   const getSpriteImage = () => {
     switch (enemy.type) {
       case 'wisp':
-        return './assets/sprites/wisp.png';
+        return wispSprite;
       case 'eyeball':
         return enemy.state === 'slide'
-          ? './assets/sprites/eyeball_slide.PNG'
-          : './assets/sprites/eyeball_walk.PNG';
+          ? eyeballSlideSprite
+          : eyeballWalkSprite;
       case 'bat':
         // Use enemy ID to generate consistent random choice between blue and purple
         const hash = enemy.id.split('').reduce((a, b) => {
@@ -131,16 +141,16 @@ const Enemy: React.FC<EnemyProps> = ({ enemy, gameState }) => {
           return a & a;
         }, 0);
         return Math.abs(hash) % 2 === 0 
-          ? './assets/sprites/bluebat_Flying.png'
-          : './assets/sprites/purplebat_Flying.png';
+          ? blueBatSprite
+          : purpleBatSprite;
       case 'ghost':
-        return './assets/sprites/ghost.png';
+        return ghostSprite;
       case 'undead':
         return enemy.bossState === 'attacking' 
-          ? './assets/sprites/undead_atk.png'
-          : './assets/sprites/undead_idle2.png';
+          ? undeadAtkSprite
+          : undeadIdleSprite;
       default:
-        return './assets/sprites/wisp.png';
+        return wispSprite;
     }
   };
 

@@ -21,7 +21,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ gameState, dispatch, onStart 
   return (
     <div className="screen start-screen">
       <img 
-        src="/assets/images/banner.png" 
+        src="./assets/images/banner.png" 
         alt="The Cavern of Keystone" 
         className="title-banner"
       />
