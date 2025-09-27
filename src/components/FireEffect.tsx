@@ -11,7 +11,7 @@ const FireEffect: React.FC<FireEffectProps> = ({ fire }) => {
   
   // Choose sprite based on spriteIndex (0-4)
   const spriteName = `fire_asset_blue_${fire.spriteIndex + 1}`;
-  const imagePath = `../public/assets/vfx/fire_asset_blue/${spriteName}.png`;
+  const imagePath = `/assets/vfx/fire_asset_blue/${spriteName}.png`;
   
   // Calculate opacity based on remaining time (fade over last 1 second)
   const elapsed = Date.now() - fire.startTime;

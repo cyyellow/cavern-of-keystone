@@ -265,17 +265,17 @@ export const AUDIO_CONFIG = {
   // Background music tracks
   BACKGROUND_MUSIC: {
     startScreen: {
-      file: '../public/assets/sfx/same shit, different day.wav',
+      file: '/assets/sfx/same shit, different day.wav',
       volume: 0.3,
       loop: true,
     },
     gameScreen: {
-      file: '../public/assets/sfx/go for it.wav',
+      file: '/assets/sfx/go for it.wav',
       volume: 0.3,
       loop: true,
     },
     bossWave: {
-      file: '../public/assets/sfx/alarm.wav',
+      file: '/assets/sfx/alarm.wav',
       volume: 0.3,
       loop: true,
     },
@@ -284,31 +284,31 @@ export const AUDIO_CONFIG = {
   // Sound effects
   SOUND_EFFECTS: {
     bullet: {
-      file: '../public/assets/sfx/star_sparkle.wav',
+      file: '/assets/sfx/star_sparkle.wav',
       volume: 0.2, // 20% volume for SFX
     },
     hit: {
-      file: '../public/assets/sfx/hit1.wav',
+      file: '/assets/sfx/hit1.wav',
       volume: 0.2, // 30% volume for hit sound
     },
     impact: {
-      file: '../public/assets/sfx/impact.wav',
+      file: '/assets/sfx/impact.wav',
       volume: 0.3, // 30% volume for impact sound
     },
     wind: {
-      file: '../public/assets/sfx/wind.wav',
+      file: '/assets/sfx/wind.wav',
       volume: 0.25, // 25% volume for wind sound
     },
     heal: {
-      file: '../public/assets/sfx/heal.wav',
+      file: '/assets/sfx/heal.wav',
       volume: 0.3, // 30% volume for heal sound
     },
     slash: {
-      file: '../public/assets/sfx/slash.wav',
+      file: '/assets/sfx/slash.wav',
       volume: 0.3, // 30% volume for slash sound
     },
     ultimate: {
-      file: '../public/assets/sfx/ultimate.wav',
+      file: '/assets/sfx/ultimate.wav',
       volume: 0.4, // 40% volume for ultimate sound
     },
   },

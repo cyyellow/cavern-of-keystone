@@ -10,7 +10,7 @@ const Wind: React.FC<WindProps> = ({ wind }) => {
   const currentFrame = wind.frame % 16; // 16 frames total
   const frameNumber = currentFrame + 1; // Frames are numbered 1-16
 
-  const imagePath = `../public/assets/vfx/wind/W401-${frameNumber}.png`;
+  const imagePath = `/assets/vfx/wind/W401-${frameNumber}.png`;
   
   // Debug logging
   console.log('Rendering wind:', wind.id, 'at', wind.x, wind.y, 'frame:', frameNumber);
