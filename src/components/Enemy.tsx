@@ -119,11 +119,11 @@ const Enemy: React.FC<EnemyProps> = ({ enemy, gameState }) => {
   const getSpriteImage = () => {
     switch (enemy.type) {
       case 'wisp':
-        return '/assets/sprites/wisp.png';
+        return './assets/sprites/wisp.png';
       case 'eyeball':
         return enemy.state === 'slide'
-          ? '/assets/sprites/eyeball_slide.PNG'
-          : '/assets/sprites/eyeball_walk.PNG';
+          ? './assets/sprites/eyeball_slide.PNG'
+          : './assets/sprites/eyeball_walk.PNG';
       case 'bat':
         // Use enemy ID to generate consistent random choice between blue and purple
         const hash = enemy.id.split('').reduce((a, b) => {
@@ -131,16 +131,16 @@ const Enemy: React.FC<EnemyProps> = ({ enemy, gameState }) => {
           return a & a;
         }, 0);
         return Math.abs(hash) % 2 === 0 
-          ? '/assets/sprites/bluebat_Flying.png'
-          : '/assets/sprites/purplebat_Flying.png';
+          ? './assets/sprites/bluebat_Flying.png'
+          : './assets/sprites/purplebat_Flying.png';
       case 'ghost':
-        return '/assets/sprites/ghost.png';
+        return './assets/sprites/ghost.png';
       case 'undead':
         return enemy.bossState === 'attacking' 
-          ? '/assets/sprites/undead_atk.png'
-          : '/assets/sprites/undead_idle2.png';
+          ? './assets/sprites/undead_atk.png'
+          : './assets/sprites/undead_idle2.png';
       default:
-        return '/assets/sprites/wisp.png';
+        return './assets/sprites/wisp.png';
     }
   };
 
