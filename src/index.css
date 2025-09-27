@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Pixelade';
-  src: url('./assets/pixelade.ttf') format('truetype');
+  src: url('/assets/pixelade.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'DungeonFont';
-  src: url('./assets/DungeonFont.ttf') format('truetype');
+  src: url('/assets/DungeonFont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
