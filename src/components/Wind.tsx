@@ -22,7 +22,7 @@ const Wind: React.FC<WindProps> = ({ wind }) => {
     transform: 'translateX(-50%) translateY(-50%)',
     pointerEvents: 'none',
     zIndex: 10,
-    backgroundImage: `url(./assets/vfx/wind/W401-${frameNumber}.png)`,
+    backgroundImage: `url(/assets/vfx/wind/W401-${frameNumber}.png)`,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
