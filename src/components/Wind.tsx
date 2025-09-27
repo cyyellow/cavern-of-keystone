@@ -9,8 +9,6 @@ const Wind: React.FC<WindProps> = ({ wind }) => {
   // Use frame from game state (starts at 0, goes to 15)
   const currentFrame = wind.frame % 16; // 16 frames total
   const frameNumber = currentFrame + 1; // Frames are numbered 1-16
-
-  const imagePath = `./assets/vfx/wind/W401-${frameNumber}.png`;
   
   // Debug logging
   console.log('Rendering wind:', wind.id, 'at', wind.x, wind.y, 'frame:', frameNumber);
@@ -24,7 +22,7 @@ const Wind: React.FC<WindProps> = ({ wind }) => {
     transform: 'translateX(-50%) translateY(-50%)',
     pointerEvents: 'none',
     zIndex: 10,
-    backgroundImage: `url(${imagePath})`,
+    backgroundImage: `url(./assets/vfx/wind/W401-${frameNumber}.png)`,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

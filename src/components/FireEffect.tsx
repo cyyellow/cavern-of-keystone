@@ -11,7 +11,6 @@ const FireEffect: React.FC<FireEffectProps> = ({ fire }) => {
   
   // Choose sprite based on spriteIndex (0-4)
   const spriteName = `fire_asset_blue_${fire.spriteIndex + 1}`;
-  const imagePath = `./assets/vfx/fire_asset_blue/${spriteName}.png`;
   
   // Calculate opacity based on remaining time (fade over last 1 second)
   const elapsed = Date.now() - fire.startTime;
@@ -32,7 +31,7 @@ const FireEffect: React.FC<FireEffectProps> = ({ fire }) => {
     top: fire.y - frameHeight / 2, // Center the scaled sprite
     width: frameWidth,         // Show only one frame (96px wide)
     height: frameHeight,       // 144px tall
-    backgroundImage: `url(${imagePath})`,
+    backgroundImage: `url(./assets/vfx/fire_asset_blue/${spriteName}.png)`,
     backgroundPosition: `-${currentFrame * frameOffset}px 0`, // 96px per frame
     backgroundSize: `${spritesheetWidth}px ${spritesheetHeight}px`, // Scaled spritesheet size
     backgroundRepeat: 'no-repeat',
