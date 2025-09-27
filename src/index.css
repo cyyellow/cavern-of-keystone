@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Pixelade';
-  src: url('../public/assets/pixelade.ttf') format('truetype');
+  src: url('/assets/pixelade.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'DungeonFont';
-  src: url('../public/assets/DungeonFont.ttf') format('truetype');
+  src: url('/assets/DungeonFont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -56,7 +56,7 @@ body {
 
 .game-screen {
   /*background-image: url('/assets/images/background.png');*/
-  background-image: url('../public/assets/images/cavern.png');
+  background-image: url('/assets/images/cavern.png');
   background-size: 100vw 100vh;
   background-repeat: repeat;
   display: block; /* Override flex centering */
@@ -828,7 +828,7 @@ body {
   width: 96px; /* 32 * 3 scale */
   height: 96px; /* 32 * 3 scale (last frame is 32x32) */
   margin-top: 1rem;
-  background-image: url('../public/assets/sprites/B_witch_death.png');
+  background-image: url('/assets/sprites/B_witch_death.png');
   background-position: 0px -1344px; 
   background-size: 96px 1440px; 
   image-rendering: pixelated;
@@ -839,7 +839,7 @@ body {
   width: 96px; /* 32 * 3 scale */
   height: 96px; /* 32 * 3 scale */
   margin-top: 1rem;
-  background-image: url('../public/assets/sprites/B_witch_idle.png');
+  background-image: url('/assets/sprites/B_witch_idle.png');
   background-position: 0px 0px; /* First frame of idle animation */
   background-size: 96px 576px; /* 32*3 x (6*32*3) - 6 frames vertically */
   image-rendering: pixelated;
