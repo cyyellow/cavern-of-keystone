@@ -47,7 +47,7 @@ const PlayerDeathAnimation: React.FC<PlayerDeathAnimationProps> = ({ gameState }
         width: spriteWidth * scale,
         height: spriteHeight * scale,
         zIndex: 20, // Above everything else
-        backgroundImage: 'url(/assets/sprites/B_witch_death.png)',
+        backgroundImage: 'url(./assets/sprites/B_witch_death.png)',
         backgroundPosition: `0px ${-frameY * scale}px`,
         backgroundSize: `${32 * scale}px ${totalSheetHeight * scale}px`,
         imageRendering: 'pixelated',

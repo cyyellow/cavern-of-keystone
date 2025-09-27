@@ -51,7 +51,7 @@ const UndeadDeathAnimation: React.FC<UndeadDeathAnimationProps> = ({ animation }
         width: spriteWidth,
         height: spriteHeight,
         zIndex: 25, // Above everything else
-        backgroundImage: 'url(/assets/sprites/undead_death.png)',
+        backgroundImage: 'url(./assets/sprites/undead_death.png)',
         backgroundPosition: `${-frameX * frameScale}px ${-frameY * frameScale}px`,
         backgroundSize: `${1000 * frameScale}px ${200 * frameScale}px`,
         imageRendering: 'pixelated',

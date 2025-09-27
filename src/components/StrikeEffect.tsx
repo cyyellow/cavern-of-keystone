@@ -28,7 +28,7 @@ const StrikeEffect: React.FC<StrikeEffectProps> = ({ strike }) => {
     top: strike.y - frameHeight / 2, // Center the scaled sprite
     width: frameWidth,         // Show only one frame (192px wide)
     height: frameHeight,       // 192px tall
-    backgroundImage: `url(/assets/vfx/strike/${frameFiles[currentFrame]})`,
+    backgroundImage: `url(./assets/vfx/strike/${frameFiles[currentFrame]})`,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

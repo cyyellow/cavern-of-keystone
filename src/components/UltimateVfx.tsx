@@ -32,7 +32,7 @@ const UltimateVfx: React.FC<UltimateVfxProps> = ({ vfx }) => {
     height: 300,
     pointerEvents: 'none',
     zIndex: 60,
-    backgroundImage: `url(/assets/vfx/ultimate/frame${frameNumber}.png)`,
+    backgroundImage: `url(./assets/vfx/ultimate/frame${frameNumber}.png)`,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     imageRendering: 'pixelated' as any,

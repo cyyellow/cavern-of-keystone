@@ -37,8 +37,8 @@ const Crystal: React.FC<CrystalProps> = ({ x, y, isDarkMode = false, isFlashing 
           width: '100%',
           height: '100%',
           backgroundImage: isDarkMode 
-            ? 'url(/assets/sprites/crystal/crystal_dark_64x64_24f_20d_no_light_no_border.png)'
-            : 'url(/assets/sprites/crystal/crystal_dark_64x64_24f_20d_normal.png)',
+            ? 'url(./assets/sprites/crystal/crystal_dark_64x64_24f_20d_no_light_no_border.png)'
+            : 'url(./assets/sprites/crystal/crystal_dark_64x64_24f_20d_normal.png)',
           backgroundPosition: `${-currentFrame * spriteWidth * scale}px 0px`,
           backgroundSize: `${spriteWidth * frames * scale}px ${spriteHeight * scale}px`
         }}

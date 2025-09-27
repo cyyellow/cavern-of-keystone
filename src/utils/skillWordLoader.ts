@@ -2,10 +2,10 @@
 export const loadSkillWordLists = async (): Promise<{ [key: string]: string[] }> => {
   try {
     const [words3, words5, words7, words9] = await Promise.all([
-      fetch('/words3.txt').then(res => res.text()),
-      fetch('/words.txt').then(res => res.text()),
-      fetch('/words7.txt').then(res => res.text()),
-      fetch('/words9.txt').then(res => res.text())
+      fetch('./words3.txt').then(res => res.text()),
+      fetch('./words.txt').then(res => res.text()),
+      fetch('./words7.txt').then(res => res.text()),
+      fetch('./words9.txt').then(res => res.text())
     ]);
 
     return {

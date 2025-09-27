@@ -52,7 +52,7 @@ const Player: React.FC<PlayerProps> = ({ player, gameState }) => {
         style={{
           width: '100%',
           height: '100%',
-          backgroundImage: 'url(/assets/sprites/B_witch_idle.png)',
+          backgroundImage: 'url(./assets/sprites/B_witch_idle.png)',
           backgroundPosition: `0px ${-frameIndex * spriteHeight}px`,
           backgroundSize: `${spriteWidth}px ${spriteHeight * 6}px`,
           imageRendering: 'pixelated',

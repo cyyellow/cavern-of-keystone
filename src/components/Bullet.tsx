@@ -41,7 +41,7 @@ const Bullet: React.FC<BulletProps> = ({ bullet }) => {
         style={{
           width: '100%',
           height: '100%',
-          backgroundImage: `url(/assets/bullet/fireball/1_${currentFrame}.png)`,
+          backgroundImage: `url(./assets/bullet/fireball/1_${currentFrame}.png)`,
           backgroundSize: '100% 100%'
         }}
       />
