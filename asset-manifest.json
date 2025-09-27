@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/your-app/static/css/main.3707dbeb.css",
-    "main.js": "/your-app/static/js/main.13607e85.js",
-    "static/media/cavern.png": "/your-app/static/media/cavern.11bfbd352603e576dbda.png",
-    "static/media/DungeonFont.ttf": "/your-app/static/media/DungeonFont.f6303d43d4a119f8743e.ttf",
-    "static/media/pixelade.ttf": "/your-app/static/media/pixelade.11153900d37ba3ad7cc3.ttf",
-    "index.html": "/your-app/index.html",
-    "main.3707dbeb.css.map": "/your-app/static/css/main.3707dbeb.css.map",
-    "main.13607e85.js.map": "/your-app/static/js/main.13607e85.js.map"
+    "main.css": "/cavern-of-keystone/static/css/main.a57dfc4a.css",
+    "main.js": "/cavern-of-keystone/static/js/main.13607e85.js",
+    "static/media/cavern.png": "/cavern-of-keystone/static/media/cavern.11bfbd352603e576dbda.png",
+    "static/media/DungeonFont.ttf": "/cavern-of-keystone/static/media/DungeonFont.f6303d43d4a119f8743e.ttf",
+    "static/media/pixelade.ttf": "/cavern-of-keystone/static/media/pixelade.11153900d37ba3ad7cc3.ttf",
+    "index.html": "/cavern-of-keystone/index.html",
+    "main.a57dfc4a.css.map": "/cavern-of-keystone/static/css/main.a57dfc4a.css.map",
+    "main.13607e85.js.map": "/cavern-of-keystone/static/js/main.13607e85.js.map"
   },
   "entrypoints": [
-    "static/css/main.3707dbeb.css",
+    "static/css/main.a57dfc4a.css",
     "static/js/main.13607e85.js"
   ]
 }
