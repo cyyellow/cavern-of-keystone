@@ -309,6 +309,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
           ...state.player,
           health: PLAYER_CONFIG.HEALTH.max
         } : state.player,
+        // Reset energy to 0 when tutorial wave completes
+        ultimateEnergy: wasTutorialWave ? 0 : state.ultimateEnergy,
         // Clear all enemies when tutorial wave completes
         enemies: wasTutorialWave ? [] : state.enemies,
         // Also clear projectiles when tutorial completes
