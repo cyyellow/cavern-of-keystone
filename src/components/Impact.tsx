@@ -10,7 +10,7 @@ const Impact: React.FC<ImpactProps> = ({ impact }) => {
   const currentFrame = impact.frame % 7; // 7 frames total (frame0000 to frame0006)
   const frameNumber = currentFrame.toString().padStart(4, '0'); // Format as frame0000, frame0001, etc.
 
-  const imagePath = `./assets/vfx/impact/frame${frameNumber}.png`;
+  const imagePath = `/assets/vfx/impact/frame${frameNumber}.png`;
 
   const style: React.CSSProperties = {
     position: 'absolute',
