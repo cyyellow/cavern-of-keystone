@@ -61,13 +61,13 @@ export function updateGameLogic(gameState: GameState, dispatch: React.Dispatch<G
 
     // Check for fire effect slowdown with difficulty multiplier
     const difficultyConfig = getDifficultyConfig(gameState.difficulty);
-    const fireSlowMultiplier = 0.7 * difficultyConfig.multipliers.impactFireSlowSpeed;
+    const fireSlowMultiplier = 0.6 * difficultyConfig.multipliers.impactFireSlowSpeed;
     gameState.fireEffects.forEach(fire => {
       if (!fire.active) return;
       const distance = Math.sqrt(
         Math.pow(enemy.x - fire.x, 2) + Math.pow(enemy.y - fire.y, 2)
       );
-      if (distance <= 70) {
+      if (distance <= 100) {
         movementSpeed *= fireSlowMultiplier; 
       }
     });

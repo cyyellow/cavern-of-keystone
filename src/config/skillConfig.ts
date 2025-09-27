@@ -27,7 +27,7 @@ export const SKILLS: Skill[] = [
     wordLength: 7,
     wordList: [], // Will be loaded from words7.txt
     damage: 3,
-    knockback: 75,
+    knockback: 40,
     speed: 12
   },
   {
@@ -37,7 +37,7 @@ export const SKILLS: Skill[] = [
     icon: './assets/images/9.png',
     wordLength: 9,
     wordList: [], // Will be loaded from words9.txt
-    damage: 40,
+    damage: 50,
     range: 250
   }
 ];

@@ -19,7 +19,7 @@ const Impact: React.FC<ImpactProps> = ({ impact }) => {
     transform: 'translateX(-50%) translateY(-50%)',
     pointerEvents: 'none',
     zIndex: 7,
-    backgroundImage: `./assets/vfx/impact/frame${frameNumber}.png`,
+    backgroundImage: `url(./assets/vfx/impact/frame${frameNumber}.png)`,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
