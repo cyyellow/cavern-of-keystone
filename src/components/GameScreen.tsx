@@ -89,7 +89,6 @@ const GameScreen: React.FC<GameScreenProps> = ({ gameState, dispatch }) => {
         <button 
           className="skip-tutorial-button"
           onClick={() => {
-            console.log('Skip tutorial button clicked!');
             dispatch({ type: 'SKIP_TUTORIAL' });
           }}
         >

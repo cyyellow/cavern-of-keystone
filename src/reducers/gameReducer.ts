@@ -195,7 +195,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
 
     case 'ADD_WIND':
-      console.log('Adding wind to state:', action.payload);
       return {
         ...state,
         winds: [...state.winds, action.payload]
@@ -582,7 +581,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
 
     case 'SKIP_TUTORIAL':
-      console.log('SKIP_TUTORIAL action received in reducer');
       return {
         ...state,
         waveState: {

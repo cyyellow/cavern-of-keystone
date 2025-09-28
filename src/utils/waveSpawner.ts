@@ -46,7 +46,6 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
     
     // Skip tutorial wave if disabled
     if (currentWave && currentWave.id === 0 && !gameState.enableTutorialWave) {
-      console.log('Skipping tutorial wave');
       dispatch({
         type: 'UPDATE_WAVE_STATE',
         payload: { currentWaveId: 1 }
@@ -55,8 +54,6 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
     }
     
     if (currentWave) {
-      console.log(`Starting wave ${currentWave.id}: ${currentWave.name}`);
-      
       // Apply difficulty multiplier to wave delay
       const difficultyConfig = getDifficultyConfig(gameState.difficulty);
       const adjustedWaveDelay = currentWave.waveDelay * difficultyConfig.multipliers.spawnDelay;
@@ -116,8 +113,6 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
       }
       
       return;
-    } else {
-      console.log(`No wave found for ID: ${waveState.currentWaveId}`);
     }
   }
 
@@ -142,7 +137,6 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
       
       if (!undeadBoss) {
         // Boss is dead and animation is complete, check if we should win or continue
-        console.log(`Wave ${currentWave.id} completed! Boss defeated!`);
         
         // Check if infinite mode is disabled and this is the last wave
         if (!gameState.enableInfiniteMode) {
@@ -193,7 +187,7 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
 
       // Handle 'nothing' enemy type - just show hint without spawning
       if (enemySpawn.type === 'nothing') {
-        console.log(`Nothing spawn - showing hint only (${waveState.currentLoopCount + 1}/${enemySpawn.count})`);
+        // Show hint only
       } else {
         // Spawn one enemy of the current type
         const enemyId = `enemy_${Date.now()}_${Math.random()}`;
@@ -222,7 +216,6 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
         }
         
         dispatch({ type: 'ADD_ENEMY', payload: enemy });
-        console.log(`Spawned ${enemySpawn.type} (${waveState.currentLoopCount + 1}/${enemySpawn.count})`);
       }
 
       // Track how many of the current enemy type we've spawned
@@ -263,16 +256,12 @@ export function updateWaveSystem(gameState: GameState, dispatch: React.Dispatch<
                 currentLoopCount: 0
               }
             });
-            console.log(`Boss wave ${currentWave.id} fully spawned - waiting for boss defeat`);
           } else {
             // Normal wave completion
-            console.log(`Wave ${currentWave.id} completed!`);
             dispatch({ type: 'COMPLETE_WAVE' });
             // Clear hint when wave completes
             dispatch({ type: 'UPDATE_CURRENT_HINT', payload: '' });
           }
-        } else {
-          console.log(`Moving to next enemy type: ${currentWave.enemies[nextEnemyIndex].type}`);
         }
       } else {
         // Continue with same enemy type - use interSpawnDelay with difficulty multiplier

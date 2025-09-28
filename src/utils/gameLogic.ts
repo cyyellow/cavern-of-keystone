@@ -344,9 +344,6 @@ export function updateGameLogic(gameState: GameState, dispatch: React.Dispatch<G
   });
 
   // Update wind projectiles
-  if (gameState.winds.length > 0) {
-    console.log('Processing wind projectiles:', gameState.winds.length);
-  }
   gameState.winds.forEach(wind => {
     if (!wind.active) return;
 
@@ -396,7 +393,6 @@ export function updateGameLogic(gameState: GameState, dispatch: React.Dispatch<G
         if (distance < windHitbox) {
         // Only damage enemies once
         if (!wind.hitEnemies.has(enemy.id)) {
-          console.log('Wind hit enemy for damage:', enemy.id, 'distance:', distance);
           wind.hitEnemies.add(enemy.id);
           
           // Deal damage
@@ -443,7 +439,6 @@ export function updateGameLogic(gameState: GameState, dispatch: React.Dispatch<G
       if (wind.hitEnemies.has(enemy.id) && !wind.knockbackEnemies.has(enemy.id)) {
         // Check if wind has passed the enemy (wind.x > enemy.x + some threshold)
         if (newX > enemy.x + 30) { // 30px threshold to ensure wind has passed
-          console.log('Applying knockback to enemy:', enemy.id);
           wind.knockbackEnemies.add(enemy.id);
           
           // Apply difficulty multiplier to knockback distance
@@ -497,8 +492,6 @@ export function updateGameLogic(gameState: GameState, dispatch: React.Dispatch<G
 
     // Deal damage immediately when impact appears (first frame)
     if (!impact.hasHit) {
-      console.log('Impact dealing damage to enemies in range');
-      
       // Find all enemies in range
       const activeEnemies = gameState.enemies.filter(enemy => enemy.active);
       const enemiesInRange = activeEnemies.filter(enemy => {
@@ -519,8 +512,6 @@ export function updateGameLogic(gameState: GameState, dispatch: React.Dispatch<G
         );
         return distance <= impact.range;
       });
-
-      console.log(`Found ${enemiesInRange.length} enemies in impact range`);
 
       if (enemiesInRange.length > 0) {
         // Apply difficulty multiplier to impact damage
@@ -1040,7 +1031,6 @@ function activateSkill(gameState: GameState, dispatch: React.Dispatch<GameAction
         `wind_${Date.now()}_${Math.random()}`,
         'knockback'
       );
-      console.log('Creating wind projectile:', wind);
       dispatch({ type: 'ADD_WIND', payload: wind });
       playWindSound();
       break;
@@ -1053,7 +1043,6 @@ function activateSkill(gameState: GameState, dispatch: React.Dispatch<GameAction
         `impact_${Date.now()}_${Math.random()}`,
         'impact'
       );
-      console.log('Creating impact projectile:', impact);
       dispatch({ type: 'ADD_IMPACT', payload: impact });
       playImpactSound();
       break;
