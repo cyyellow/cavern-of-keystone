@@ -143,7 +143,7 @@ The game uses carefully curated pixel art assets:
 - **Abbadon** by Nathan Scott
 
 ### Sprites
-- **Blue Witch** by [Artist name]
+- **Blue Witch** by 9E0
 - **Wisp** by ramenphysics22
 - **Cave Bat, Ghost** by Pop Shop Packs
 - **Eyeball** by penusbmic
