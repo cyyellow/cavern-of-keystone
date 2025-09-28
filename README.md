@@ -1,6 +1,9 @@
 # The Cavern of Keystone
 
-A single-player typing-based tower defense game built with React, TypeScript, and CSS. Defend your tower by typing words to unleash powerful skills against incoming enemies!
+![Game Screenshot](public/screenshot.png)
+
+A single-player typing-based shooting game made with Cursor, built with React, TypeScript, and CSS. Defend your tower by typing words to unleash powerful skills against incoming enemies!
+
 
 ## 🎮 Features
 
@@ -9,29 +12,29 @@ A single-player typing-based tower defense game built with React, TypeScript, an
 - **Four Unique Skills**:
   - **Heal** (3 letters): Restore health
   - **Bullet** (5 letters): Shoot projectiles at enemies
-  - **Wind** (7 letters): Knockback attack with wind effects
-  - **Impact** (9 letters): Devastating area-of-effect attack
-- **Ultimate Skill**: Build up energy to unleash a powerful screen-clearing ultimate attack
+  - **Wind** (7 letters): Wind attack with knockback effects
+  - **Impact** (9 letters): Area-of-effect attack with slowing fire effects
+- **Ultimate Skill**: Build up energy to unleash a powerful screen-clearing electric attack!
 
 ### **Enemy Types**
-- **Wisp** (weak, fast)
-- **Bat** (medium health, medium speed) - Randomly spawns as blue or purple variants
-- **Ghost** (strong, slow, reduced knockback resistance)
-- **Eyeball** (slides and walks with different movement patterns)
-- **Undead Boss** (final boss with special death animation)
+- **Wisp** (mob, medium speed)
+- **Bat** (mob, fast speed)
+- **Ghost** (tank, strong and slow)
+- **Eyeball** (fast mob that can attack repeatedly)
+- **Undead Boss** (final boss with rapid attacks)
 
 ### **Game Systems**
-- **Wave-based Progression**: 10 unique waves plus infinite mode
+- **Wave-based Progression**: 6 unique waves plus infinite mode
 - **Difficulty Levels**: Easy (20 WPM), Normal (40 WPM), Hard (60 WPM)
 - **Infinite Mode**: Endless waves for high-score chasing
 - **Health & Energy Systems**: Manage health and energy for ultimate attacks
-- **Score & WPM Tracking**: Track your typing performance
-- **Visual Effects**: Impact effects, fire effects, wind effects, and more
+- **Score & WPM Tracking**: Track your typing performance and word count
+- **Visual Effects**: Impact effects, fire effects, wind effects, and more!
 
 ### **Audio & Visual**
 - **Pixel Art Sprites**: Hand-crafted pixel art animations
 - **Sound Effects**: Audio feedback for all actions (bullets, impacts, healing, etc.)
-- **Background Music**: Dynamic music that changes based on game state
+- **Background Music**: Dynamic music that changes with game state
 - **Visual Effects**: Screen-shaking impacts, floating damage numbers, death animations
 
 ## 🎯 How to Play
@@ -42,12 +45,6 @@ A single-player typing-based tower defense game built with React, TypeScript, an
 4. **Manage Resources**: Watch your health and energy bars
 5. **Defeat the Boss**: Survive 10 waves to face the Undead Boss
 6. **Aim for High Scores**: Try to achieve the highest WPM and score possible!
-
-## ⌨️ Controls
-
-- **Typing**: Type letters to complete words and activate skills
-- **Enter**: Manually trigger completed skills
-- **Mouse**: Click buttons for menus and restarting
 
 ## 🚀 Installation & Running
 
@@ -61,9 +58,9 @@ A single-player typing-based tower defense game built with React, TypeScript, an
    npm run dev
    ```
 
-3. **Open your browser** and navigate to `http://localhost:5173`
+3. **Open your browser** and navigate to localhost from the link in your terminal
 
-4. **Build for production**:
+(Optional) **Build for production**:
    ```bash
    npm run build
    ```
@@ -75,13 +72,13 @@ src/
 ├── components/              # React components
 │   ├── StartScreen.tsx      # Game start screen with difficulty selection
 │   ├── GameScreen.tsx       # Main game interface
-│   ├── GameOverScreen.tsx   # Game over screen with stats
+│   ├── GameOverScreen.tsx   # Game over screen
 │   ├── WinScreen.tsx        # Victory screen
 │   ├── Player.tsx           # Player character with idle animation
 │   ├── Enemy.tsx            # Enemy sprites and animations
 │   ├── Bullet.tsx           # Bullet projectiles
 │   ├── WordDisplay.tsx      # Word typing interface
-│   ├── SkillBar.tsx         # Skill cooldown indicators
+│   ├── SkillBar.tsx         # Skill indicators
 │   ├── DamageEffect.tsx     # Floating damage numbers
 │   ├── PlayerDeathAnimation.tsx  # Player death sequence
 │   ├── UndeadDeathAnimation.tsx  # Boss death sequence
@@ -89,17 +86,17 @@ src/
 │   ├── Impact.tsx           # Impact visual effects
 │   ├── Wind.tsx             # Wind visual effects
 │   ├── UltimateVfx.tsx      # Ultimate skill effects
-│   ├── StrikeEffect.tsx     # Strike visual effects
-│   ├── Crystal.tsx          # Enemy spawn crystal
-│   ├── HintDisplay.tsx      # Game hints and tips
+│   ├── StrikeEffect.tsx     # Boss strike visual effects
+│   ├── Crystal.tsx          # Enemy spawn crystal (The Keystone!)
+│   ├── HintDisplay.tsx      # Hints for the tutorial
 │   ├── WaveDisplay.tsx      # Wave progress indicator
-│   ├── WaveAnnouncement.tsx # Wave transition announcements
-│   └── GameOverScreen.tsx   # Game over interface
+│   └── WaveAnnouncement.tsx # Wave transition announcements
+|
 ├── config/                  # Game configuration
-│   ├── gameConfig.ts        # Core game settings and enemy stats
-│   ├── skillConfig.ts       # Skill definitions and properties
-│   ├── waveConfig.ts        # Wave configurations and enemy spawns
-│   └── difficultyConfig.ts  # Difficulty multipliers and settings
+│   ├── gameConfig.ts        # Core game settings and player/enemy stats
+│   ├── skillConfig.ts       # Skill definitions 
+│   ├── waveConfig.ts        # Wave configurations for enemy spawns
+│   └── difficultyConfig.ts  # Difficulty multipliers 
 ├── hooks/                   # Custom React hooks
 │   └── useGameLoop.ts       # 60 FPS game loop
 ├── reducers/                # State management
@@ -126,31 +123,7 @@ The game uses carefully curated pixel art assets:
 - **`public/assets/bullet/`** - Bullet animations
 - **`public/assets/sfx/`** - Sound effects and background music
 - **`public/assets/`** - Font files for UI typography
-- **Word Lists**: `words.txt`, `words3.txt`, `words7.txt`, `words9.txt` (filtered for family-friendly content)
-
-## 🎯 Game Mechanics
-
-### **Skill System**
-- Each skill requires typing a word of specific length
-- Skills have cooldowns and visual indicators
-- Ultimate skill charges over time and clears the screen
-
-### **Enemy AI**
-- Different movement patterns for each enemy type
-- Boss enemies have special attack patterns
-- Eyeballs have unique sliding mechanics
-
-### **Difficulty Scaling**
-- Enemy health, speed, and spawn rates scale with difficulty
-- Skill effectiveness adjusts based on difficulty level
-- Wave progression varies by difficulty setting
-
-### **Visual Polish**
-- Smooth 60 FPS animations
-- Screen shake effects for impacts
-- Floating damage numbers
-- Death animations for player and boss
-- Dynamic background music
+- **Word Lists**: `words.txt`, `words3.txt`, `words7.txt`, `words9.txt`
 
 ## 🛠️ Technical Details
 
@@ -162,31 +135,36 @@ The game uses carefully curated pixel art assets:
 - **Performance**: Optimized 60 FPS game loop
 - **Code Quality**: TypeScript for type safety and better development experience
 
-## 🎮 Game Modes
 
-- **Standard Mode**: Complete 10 waves to defeat the Undead Boss
-- **Infinite Mode**: Endless waves for high-score chasing
-- **Difficulty Levels**: Easy (20 WPM), Normal (40 WPM), Hard (60 WPM)
+## 🎨 Credits
 
-## 🏆 Scoring System
+### Fonts
+- **DungeonFont** by vrtxrry
+- **Abbadon** by Nathan Scott
 
-- **Points**: Earn points for defeating enemies (varies by enemy type)
-- **WPM Tracking**: Monitor your typing speed and accuracy
-- **High Scores**: Track your best performance across different difficulties
+### Sprites
+- **Blue Witch** by [Artist name]
+- **Wisp** by ramenphysics22
+- **Cave Bat, Ghost** by Pop Shop Packs
+- **Eyeball** by penusbmic
+- **Undead executioner** by kronovi
 
-## 🎵 Audio Features
+### Image Assets
+- **Cave background** by seetyaji
+- **Heart, Energy UI elements** by pixel_iwart
+- **Crystals** by frakassets
+- **Pixel Art Skill Icon** by PixelExplosive
 
-- **Background Music**: Dynamic music that changes with game state
-- **Sound Effects**: Audio feedback for all game actions
-- **Volume Controls**: Adjustable audio levels
+### Visual Effects
+- **Wind, white Slash (undead boss)** by nyk_nck
+- **Fire bullet** by xyezawr
+- **Impact, ultimate explosion** by Will Tice
+- **Blue fires (impact)** by devkidd
 
-## 🚀 Deployment
-
-The game is ready for deployment to any static hosting service:
-- Vercel, Netlify, GitHub Pages, etc.
-- Builds to static files with `npm run build`
-- No server-side requirements
+### Sound Effects
+- **Background music** by haberchuck
+- **Pixel combat SFX** by Helton Yan
 
 ---
 
-**Enjoy defending The Cavern of Keystone!** 🏰⚔️
+**Enjoy typing and fighting for your life!** 🏰⚔️
